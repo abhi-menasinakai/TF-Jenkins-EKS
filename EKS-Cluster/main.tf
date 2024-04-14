@@ -58,3 +58,9 @@ module "eks" {
     Terraform   = "true"
   }
 }
+
+resource "aws_iam_openid_connect_provider" "example" {
+  client_id_list  = ["sts.amazonaws.com"]
+  thumbprint_list = ["0b49f206976d0bd4738b0ff2b74686e27f8d3a1a"]
+  url             = module.eks.cluster_oidc_issuer_url
+}
